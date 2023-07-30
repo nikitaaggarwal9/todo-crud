@@ -30,6 +30,7 @@ const EditModal = ({id, title, edit}: IProps) => {
 		    toast.success("Todo Added Succesfully!");
         }
 
+		setNewTitle('');
         handleClose();
     }
 
