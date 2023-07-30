@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TodoList from "./components/TodoList";
+import NavBar from "./components/NavBar";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAppSelector } from './hooks';
+// import { RootState } from 'app/redux/store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const todos = useAppSelector((state)=>state.todos);
+
+	return (
+		<>
+			<ToastContainer />
+			<NavBar />
+			<div className="container bg-white p-4 mt-5 d-flex flex-column align-items-center justify-content-center">
+				{todos.length > 0 ? <TodoList /> : <h2>No todos added yet!</h2>}
+			</div>
+		</>
+	);
+};
 
 export default App;
